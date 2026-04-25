@@ -122,18 +122,21 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        headerRow.innerHTML = '';
+        // 获取操作列的th（第一个th）
+        const thOp = headerRow.querySelector('th:first-child');
+        if (thOp) {
+            thOp.className = 'col-action';
+            thOp.textContent = '操作';
+        }
 
-        // Operation column
-        const thOp = document.createElement('th');
-        thOp.className = 'medium';
-        thOp.textContent = '';
-        headerRow.appendChild(thOp);
+        // 清除其他列（保留第一个操作列）
+        while (headerRow.children.length > 1) {
+            headerRow.removeChild(headerRow.lastChild);
+        }
 
         // Dynamic columns
         columns.forEach(col => {
             const th = document.createElement('th');
-            th.className = 'wide';
             th.textContent = col;
             headerRow.appendChild(th);
         });
@@ -154,9 +157,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Operation cell
             const opCell = row.insertCell();
-            opCell.innerHTML = `<button class="editButton">Edit</button>
-                                <button class="saveChange">Save</button>
-                                <button class="cancelChange">Cancel</button>`;
+            opCell.classList.add('col-action');
+            opCell.style.textAlign = 'center';
+            opCell.innerHTML = `<button class="editButton">编辑</button>
+                                <button class="saveChange" style="display:none;">保存</button>
+                                <button class="cancelChange" style="display:none;">取消</button>`;
 
             // Data cells
             columns.forEach(colKey => {
@@ -273,8 +278,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function toggleEdit(row, isEditing, columns) {
-        const displayState = isEditing ? 'none' : '';
-        const editState = isEditing ? '' : 'none';
+        const displayState = isEditing ? 'none' : 'inline-block';
+        const editState = isEditing ? 'inline-block' : 'none';
 
         row.querySelectorAll('.cell-data').forEach((cell) => {
             const colKey = cell.dataset.colKey;
@@ -317,6 +322,13 @@ document.addEventListener('DOMContentLoaded', function () {
         row.querySelector('.editButton').style.display = displayState;
         row.querySelector('.saveChange').style.display = editState;
         row.querySelector('.cancelChange').style.display = editState;
+        
+        // 添加编辑态样式
+        if (isEditing) {
+            row.classList.add('edit-row');
+        } else {
+            row.classList.remove('edit-row');
+        }
     }
     
     // 请求AI建议

@@ -1,172 +1,773 @@
-#headerContainer {
-    display: flex;
-    align-items: center;
-    width: 1600px; /* Set the width to 1400px */
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 20px; /* Optional: add padding for visual spacing */
-}
-#headerContainer img {
-    width: 250px; /* Adjust size as needed */
-    height: auto;
-    margin-right: 300px; /* Space between image and title */
+/* ============================================
+   核电FMEA分析系统 - 现代专业样式表
+   ============================================ */
+
+/* 根据CSS变量定义 - 核电主题配色 */
+:root {
+    --primary-color: #0f3a6b;           /* 深蓝 - 专业、可靠 */
+    --primary-light: #1a4f8b;
+    --primary-dark: #092447;
+    
+    --accent-color: #d4af37;            /* 金色 - 高端、信任 */
+    --accent-light: #e6c547;
+    --accent-dark: #b8941c;
+    
+    --success-color: #27ae60;           /* 成功绿 */
+    --warning-color: #f39c12;           /* 警告橙 */
+    --danger-color: #e74c3c;            /* 危险红 */
+    --info-color: #3498db;              /* 信息蓝 */
+    
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    
+    --bg-white: #ffffff;
+    --bg-light: #f9fafb;
+    --bg-lighter: #f3f4f6;
+    
+    --border-color: #e5e7eb;
+    --border-color-light: #f3f4f6;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ============================================
+   全局样式
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ============================================
+   Header 样式
+   ============================================ */
+
+.header-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--bg-white);
+    padding: 40px 20px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.header-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header-logo {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header-text h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.header-text p {
+    font-size: 15px;
+    opacity: 0.95;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Guide Section 样式
+   ============================================ */
+
+.guide-section {
+    padding: 40px 20px;
+    background-color: var(--bg-white);
+    margin-bottom: 20px;
+}
+
+.guide-card {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+}
+
+.guide-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.guide-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.guide-header i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.guide-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.guide-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.guide-step {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(15, 58, 107, 0.02);
+    transition: var(--transition-base);
+}
+
+.guide-step:hover {
+    background-color: rgba(15, 58, 107, 0.05);
+    transform: translateX(5px);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--bg-white);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.step-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.step-content p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.highlight-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.highlight-action {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+/* ============================================
+   Table Section 样式
+   ============================================ */
+
+.table-section {
+    flex: 1;
+    padding: 30px 20px;
+    background-color: var(--bg-light);
+}
+
+.table-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.table-controls {
+    padding: 20px 25px;
+    background: linear-gradient(90deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.table-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.table-info i {
+    color: var(--info-color);
+}
+
+/* 按钮样式 */
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--gray-200);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background-color: var(--gray-300);
+    box-shadow: var(--shadow-md);
+}
+
+/* 表格容器 */
+.table-container {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--bg-lighter);
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--gray-400);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
+}
+
+/* ============================================
+   表格样式
+   ============================================ */
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     table-layout: fixed;
 }
 
-td {
-    font-size: 16px;
-    padding: 4px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    word-wrap: break-word;
-    overflow: hidden; /* Ensures content that exceeds cell bounds is hidden */
-    text-overflow: ellipsis; /* Adds an ellipsis to indicate clipped text */
-    height: 100px; /* Fixed height for all cells */
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 th {
-    background-color: #f4f4f4;
-    font-size: 16px;
-    padding: 4px;
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--bg-white);
+    padding: 16px 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid var(--accent-color);
+    vertical-align: middle;
     word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 100px; /* Fixed height for all cells */
-    position: sticky; /* Make header sticky */
-    top: -30px; /* Stick to the top of the scrollable area */
-    z-index: 10; /* Ensure the header is above other content */
+    white-space: normal;
 }
 
-.narrow {
-    width: 50px; /* Fixed width for narrow cells */
+th.col-action {
+    width: 140px;
+    text-align: center;
+    min-width: 140px;
 }
 
-.medium {
-    width: 100px; /* Fixed width for medium cells */
+td {
+    padding: 14px 12px;
+    font-size: 13px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-height: 120px;
+    overflow-y: auto;
 }
 
-.wide {
-    width: 200px; /* Fixed width for wide cells */
+tr {
+    transition: var(--transition-fast);
 }
 
-.fixed-size-container {
-    width: 1400px; /* or any specific width */
-    height: 850px; /* fixed height */
-    overflow: auto; /* enables scrolling */
-    margin: auto; /* centering if needed */
-    padding: 0px; /* optional padding */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* optional shadow for better visibility */
+tbody tr {
+    background-color: var(--bg-white);
 }
 
-
-body .tooltip, .second-tooltip {
-    opacity: 1;
-    display: none;
-    position: absolute;
-    border: 1px solid #ccc;
-    color: black;
-    background-color: #ffffe0; /* Pale yellow background */
-    padding: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    width: auto;
+tbody tr:nth-child(even) {
+    background-color: rgba(15, 58, 107, 0.02);
 }
 
-.tooltip.visible, .second-tooltip.visible {
-    display: block;
+tbody tr:hover {
+    background-color: rgba(212, 175, 55, 0.05);
 }
 
-
-
-.tooltip-item, .second-tooltip-item {
-    padding: 5px 10px;
+/* 操作列按钮 */
+.editButton,
+.saveChange,
+.cancelChange {
+    padding: 6px 12px;
     margin: 2px;
-    border: 1px solid #ddd;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
-    background-color: #f4f4f4;
-    display: block; /* Ensure items stack vertically */
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    display: inline-block;
 }
 
-.tooltip-item:hover, .second-tooltip-item:hover {
-    background-color: #e2e2e2;
+.editButton {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
 }
 
-.processing {
-    background-color: yellow;
+.editButton:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.05);
 }
 
-textarea.editable-textarea {
-    width: calc(100% - 8px); /* Subtract horizontal paddings */
-    height: calc(100% - 8px); /* Subtract vertical paddings */
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    margin: 0; /* Ensure no default margins are applied */
-    padding: 2px; /* You can adjust padding inside the textarea if needed */
-    resize: none;
-    overflow: auto;
-    display: block; /* Ensures it does not have any inline properties */
+.saveChange {
+    background-color: var(--success-color);
+    color: var(--bg-white);
 }
 
-.edit-row {
-    background-color: #ffffe0; /* 淡黄色 */
+.saveChange:hover {
+    background-color: #229954;
+    transform: scale(1.05);
 }
 
-/* Sidebar CSS */
-.sidebar {
-    position: fixed;
-    bottom: -100%; /* Start hidden below the screen */
-    left: 0;
+.cancelChange {
+    background-color: var(--danger-color);
+    color: var(--bg-white);
+}
+
+.cancelChange:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* 编辑态样式 */
+.normal-row.edit-row {
+    background-color: rgba(243, 156, 18, 0.08);
+}
+
+textarea.editTextArea {
     width: 100%;
-    background: #f4f4f4;
-    transition: bottom 0.3s;
-}
-
-.sidebar-content {
-    padding: 5px;
-    max-height: 200px; /* Adjust the max height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.close-btn {
-    float: left;
+    min-height: 80px;
     padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    resize: vertical;
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+textarea.editTextArea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* 图片相关 */
+.image-cell {
+    text-align: center;
+}
+
+.image-cell img {
+    max-width: 100%;
+    max-height: 100px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-fast);
+}
+
+.image-cell img:hover {
+    transform: scale(1.05);
+}
+
+.upload-image-btn,
+.delete-image-btn {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
+    transition: var(--transition-fast);
 }
 
-
-
-.green-cell {
-    background-color: #28a745; /* Bootstrap's green for success */
+.upload-image-btn {
+    background-color: var(--info-color);
+    color: var(--bg-white);
 }
 
-.yellow-cell {
-    background-color: #ffc107; /* Bootstrap's yellow for warning */
+.upload-image-btn:hover {
+    background-color: #2980b9;
 }
 
-.red-cell {
-    background-color: #dc3545; /* Bootstrap's red for danger */
+.delete-image-btn {
+    background-color: var(--danger-color);
+    color: var(--bg-white);
 }
 
-.gray-cell {
-    background-color: #e0e0e0; /* A light gray color */
+.delete-image-btn:hover {
+    background-color: #c0392b;
 }
 
-#toggleSidebar {
-    position: fixed;
-    right: 50%;
-    bottom: 0px;
-    width: 300px;
+/* ============================================
+   Footer 样式
+   ============================================ */
+
+.footer-section {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--bg-white);
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    border-top: 2px solid var(--accent-color);
+    margin-top: auto;
+}
+
+/* ============================================
+   Tooltip/AI Suggestion 样式
+   ============================================ */
+
+#ai-suggestion-tooltip {
+    background: var(--bg-white);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--shadow-xl);
+    font-size: 13px;
+    z-index: 10000;
+}
+
+.apply-suggestion-btn {
+    background-color: var(--success-color);
+    color: var(--bg-white);
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.apply-suggestion-btn:hover {
+    background-color: #229954;
+    transform: scale(1.05);
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .header-logo-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .header-text h1 {
+        font-size: 24px;
+    }
+    
+    .guide-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    th {
+        padding: 12px 8px;
+        font-size: 12px;
+    }
+    
+    td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        padding: 25px 15px;
+    }
+    
+    .header-logo {
+        width: 70px;
+    }
+    
+    .header-text h1 {
+        font-size: 20px;
+    }
+    
+    .header-text p {
+        font-size: 12px;
+    }
+    
+    .guide-section {
+        padding: 25px 15px;
+    }
+    
+    .guide-card {
+        padding: 20px;
+    }
+    
+    .table-section {
+        padding: 15px 10px;
+    }
+    
+    th, td {
+        padding: 8px 5px;
+        font-size: 11px;
+    }
+    
+    .editButton,
+    .saveChange,
+    .cancelChange {
+        padding: 5px 8px;
+        font-size: 11px;
+        margin: 1px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 8px 12px;
+        font-size: 12px;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-section {
+        padding: 15px 10px;
+    }
+    
+    .header-logo {
+        width: 50px;
+    }
+    
+    .header-text h1 {
+        font-size: 16px;
+    }
+    
+    .header-text p {
+        font-size: 11px;
+        display: none;
+    }
+    
+    .guide-section {
+        padding: 15px 10px;
+    }
+    
+    .guide-card {
+        padding: 15px;
+    }
+    
+    .guide-steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .control-group {
+        width: 100%;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .table-info {
+        display: none;
+    }
+}
+
+/* ============================================
+   加载动画
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.guide-step {
+    animation: fadeIn 0.3s ease-out;
+}
+
+tbody tr {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ============================================
+   打印样式
+   ============================================ */
+
+@media print {
+    .table-controls,
+    .editButton,
+    .saveChange,
+    .cancelChange,
+    .header-section::before {
+        display: none !important;
+    }
+    
+    table {
+        box-shadow: none;
+    }
+    
+    tr {
+        page-break-inside: avoid;
+    }
 }

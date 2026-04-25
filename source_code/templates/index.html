@@ -3,54 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表格</title>
+    <title>核电FMEA分析管理系统</title>
     <!-- 修改路径为 /static/styles.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd/slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- 修改路径为 /static/script.js -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
-<div id="headerContainer">
-    <!-- 修改路径为 /static/fmea_logo.png -->
-    <img src="{{ url_for('static', filename='fmea_logo.png') }}" alt="Logo">
-    <h1>风险/缺陷分析表</h1>
-    <div class="user-guide">
-        <strong>使用说明：</strong>
-        <ol>
-            <li><strong>编辑：</strong>点击某行的 “Edit” 进入编辑。</li>
-            <li><strong>生成建议：</strong>进入编辑后，在文本框内<strong>右键</strong>请求 AI 建议。</li>
-            <li><strong>保存/取消：</strong>点击 “Save” 保存或 “Cancel” 取消。</li>
-        </ol>
+    <div id="mainContainer">
+        <!-- Header Section -->
+        <header id="headerContainer" class="header-section">
+            <div class="header-content">
+                <div class="header-logo-section">
+                    <img src="{{ url_for('static', filename='fmea_logo.png') }}" alt="Logo" class="header-logo">
+                    <div class="header-text">
+                        <h1 class="header-title">核电FMEA分析管理系统</h1>
+                        <p class="header-subtitle">失效模式及影响分析 | 风险评估与缺陷管理</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Guide Card Section -->
+        <section class="guide-section">
+            <div class="guide-card">
+                <div class="guide-header">
+                    <i class="fas fa-book-open"></i>
+                    <h2>使用说明</h2>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-steps">
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>编辑行数据</h4>
+                                <p>点击任一行的 <span class="highlight-btn">编辑</span> 按钮进入编辑模式</p>
+                            </div>
+                        </div>
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>请求AI建议</h4>
+                                <p>编辑模式下，在文本框内<span class="highlight-action">右键点击</span>请求AI智能建议</p>
+                            </div>
+                        </div>
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>保存更改</h4>
+                                <p>点击 <span class="highlight-btn">保存</span> 保存修改，或 <span class="highlight-btn">取消</span> 放弃编辑</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Table Section -->
+        <section class="table-section">
+            <div class="table-wrapper">
+                <div class="table-controls">
+                    <div class="control-group">
+                        <button id="addNewEntryButton" class="btn-primary">
+                            <i class="fas fa-plus"></i> 新增条目
+                        </button>
+                        <button id="downloadCSVButton" class="btn-secondary">
+                            <i class="fas fa-download"></i> 导出数据
+                        </button>
+                    </div>
+                    <div class="table-info">
+                        <span class="info-text"><i class="fas fa-info-circle"></i> 向下滚动查看更多数据</span>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="fmeaTable">
+                        <thead>
+                            <tr id="tableHeaderRow">
+                                <th class="col-action">操作</th>
+                                <th>异常缺陷名称</th>
+                                <th>异常缺陷现象</th>
+                                <th>风险或潜在后果</th>
+                                <th>干预行动</th>
+                                <th>原因分析</th>
+                                <th>消缺行动</th>
+                                <th>相关知识</th>
+                                <th>故障图片</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 由 script.js 动态填充行 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <p>核电FMEA分析管理系统 © 2024 | 专业风险评估工具</p>
+        </footer>
     </div>
-</div>
-
-<table id="fmeaTable">
-    <thead>
-        <tr id="tableHeaderRow">
-            <th>操作</th>
-            <th>异常缺陷名称</th>
-            <th>异常缺陷现象</th>
-            <th>风险或潜在后果</th>
-            <th>干预行动</th>
-            <th>原因分析</th>
-            <th>消缺行动</th>
-            <th>相关知识</th>
-            <th>故障图片</th> <!-- 新增“故障图片”列 -->
-        </tr>
-    </thead>
-    <tbody>
-        <!-- 由 script.js 动态填充行 -->
-    </tbody>
-</table>
-
-<button id="addNewEntryButton">Add New Entry</button>
-<button id="downloadCSVButton">Download CSV</button>
 
 </body>
 </html>

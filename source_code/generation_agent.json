@@ -1,28 +1,28 @@
 {
     "output": [
         {
-            "reason": "机理-腐蚀磨损",
-            "content": "1 号压缩机油路腐蚀导致渗漏",
+            "reason": "机理-接口板损坏",
+            "content": "更换A071接口板并校准电压",
             "comment": ""
         },
         {
-            "reason": "处置-临时隔离",
-            "content": "隔离渗漏油路，防止油污染",
+            "reason": "处置-隔离检修",
+            "content": "隔离4LBJ002RD，检修A071板",
             "comment": ""
         },
         {
-            "reason": "后果-系统功能下降",
-            "content": "影响风冷机组冷却效果",
+            "reason": "后果-供电可靠性",
+            "content": "影响4LBJ002RD供电",
             "comment": ""
         },
         {
-            "reason": "干预-加油",
-            "content": "手动加油，确保油位正常",
+            "reason": "原因-板卡升级",
+            "content": "基准电压不适用，需调整",
             "comment": ""
         },
         {
-            "reason": "检修-更换部件",
-            "content": "更换渗漏油阀，恢复油路",
+            "reason": "措施-停运检修",
+            "content": "停运4LBJ002RD，检修电源",
             "comment": ""
         }
     ]
