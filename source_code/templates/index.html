@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格</title>
+    <!-- 修改路径为 /static/styles.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- 修改路径为 /static/script.js -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+<div id="headerContainer">
+    <!-- 修改路径为 /static/fmea_logo.png -->
+    <img src="{{ url_for('static', filename='fmea_logo.png') }}" alt="Logo">
+    <h1>风险/缺陷分析表</h1>
+    <div class="user-guide">
+        <strong>使用说明：</strong>
+        <ol>
+            <li><strong>编辑：</strong>点击某行的 “Edit” 进入编辑。</li>
+            <li><strong>生成建议：</strong>进入编辑后，在文本框内<strong>右键</strong>请求 AI 建议。</li>
+            <li><strong>保存/取消：</strong>点击 “Save” 保存或 “Cancel” 取消。</li>
+        </ol>
+    </div>
+</div>
+
+<table id="fmeaTable">
+    <thead>
+        <tr id="tableHeaderRow">
+            <th>操作</th>
+            <th>异常缺陷名称</th>
+            <th>异常缺陷现象</th>
+            <th>风险或潜在后果</th>
+            <th>干预行动</th>
+            <th>原因分析</th>
+            <th>消缺行动</th>
+            <th>相关知识</th>
+            <th>故障图片</th> <!-- 新增“故障图片”列 -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 由 script.js 动态填充行 -->
+    </tbody>
+</table>
+
+<button id="addNewEntryButton">Add New Entry</button>
+<button id="downloadCSVButton">Download CSV</button>
+
+</body>
+</html>

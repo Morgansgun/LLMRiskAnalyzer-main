@@ -1,0 +1,29 @@
+{
+    "output": [
+        {
+            "reason": "机理-腐蚀磨损",
+            "content": "1 号压缩机油路腐蚀导致渗漏",
+            "comment": ""
+        },
+        {
+            "reason": "处置-临时隔离",
+            "content": "隔离渗漏油路，防止油污染",
+            "comment": ""
+        },
+        {
+            "reason": "后果-系统功能下降",
+            "content": "影响风冷机组冷却效果",
+            "comment": ""
+        },
+        {
+            "reason": "干预-加油",
+            "content": "手动加油，确保油位正常",
+            "comment": ""
+        },
+        {
+            "reason": "检修-更换部件",
+            "content": "更换渗漏油阀，恢复油路",
+            "comment": ""
+        }
+    ]
+}
