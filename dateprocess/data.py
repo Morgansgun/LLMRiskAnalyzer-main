@@ -86,13 +86,11 @@ def md_to_csv_by_heading(md_path: str, out_csv: str):
 
         flush()
 
-    # ✅ 新增：按设备标签排序，让同设备故障相邻
+
     df = pd.DataFrame(records, columns=FIELDS)
     df["_device_tag"] = df["异常缺陷名称"].apply(extract_device_tag)
 
-    # 排序规则：
-    # 1) 设备标签（UNKNOWN 放最后）
-    # 2) 异常缺陷名称（同设备下再按名称排）
+
     df["_unknown"] = (df["_device_tag"] == "UNKNOWN").astype(int)
     df = df.sort_values(by=["_unknown", "_device_tag", "异常缺陷名称"], kind="stable")
 

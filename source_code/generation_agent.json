@@ -1,28 +1,28 @@
 {
     "output": [
         {
-            "reason": "机理-接口板损坏",
-            "content": "更换A071接口板并校准电压",
+            "reason": "机理-腐蚀磨损",
+            "content": "左塔进气压力开关腐蚀穿孔",
             "comment": ""
         },
         {
-            "reason": "处置-隔离检修",
-            "content": "隔离4LBJ002RD，检修A071板",
+            "reason": "处置-临时措施",
+            "content": "隔离故障压力开关",
             "comment": ""
         },
         {
-            "reason": "后果-供电可靠性",
-            "content": "影响4LBJ002RD供电",
+            "reason": "后果-设备损伤",
+            "content": "导致干燥器功能失效",
             "comment": ""
         },
         {
-            "reason": "原因-板卡升级",
-            "content": "基准电压不适用，需调整",
+            "reason": "机理-设计缺陷",
+            "content": "压力开关密封设计不当",
             "comment": ""
         },
         {
-            "reason": "措施-停运检修",
-            "content": "停运4LBJ002RD，检修电源",
+            "reason": "处置-更换备件",
+            "content": "更换新压力开关",
             "comment": ""
         }
     ]

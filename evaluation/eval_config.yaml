@@ -1,0 +1,16 @@
+data_path: evaluation/eval_records.csv
+calib_ids_path: evaluation/calib_ids.txt
+test_ids_path: evaluation/test_ids.txt
+cache_path: evaluation/generated_outputs_cache.json
+output_dir: evaluation/eval_results
+
+target_fields:
+  - 风险或潜在后果
+  - 原因分析
+  - 消缺行动
+
+threshold: 0.78
+embedding_model: BAAI/bge-small-zh-v1.5
+expected_total: 300
+expected_correct: 270
+expected_accuracy: 0.90

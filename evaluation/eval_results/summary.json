@@ -1,0 +1,23 @@
+{
+  "runtime": {
+    "repeat": 100,
+    "avg_preprocessing_time": 0.0094,
+    "requirement": "<5s",
+    "passed": true
+  },
+  "fusion_accuracy": {
+    "task": "masked_fmea_field_reconstruction",
+    "total_records": 100,
+    "target_fields": [
+      "风险或潜在后果",
+      "原因分析",
+      "消缺行动"
+    ],
+    "total_samples": 300,
+    "correct_samples": 270,
+    "threshold": 0.78,
+    "top1_accuracy": 0.9,
+    "requirement": ">80%",
+    "passed": true
+  }
+}

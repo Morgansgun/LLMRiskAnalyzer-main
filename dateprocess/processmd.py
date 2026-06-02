@@ -2,7 +2,7 @@ import re
 from io import StringIO
 import pandas as pd
 
-# 只改这里：新增“相关知识”
+
 FIELDS = ["异常缺陷名称","异常缺陷现象","风险或潜在后果","干预行动","原因分析","消缺行动","相关知识"]
 
 def iter_tables(md_text: str):

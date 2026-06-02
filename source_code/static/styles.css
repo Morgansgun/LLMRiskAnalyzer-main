@@ -134,21 +134,25 @@ body {
 .header-logo {
     width: 140px;
     height: 140px;
-    background: rgba(212, 175, 55, 0.15);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 16px;
-    padding: 15px;
+    background: transparent;
+    border: 2.5px solid var(--accent-color);
+    border-radius: 18px;
+    padding: 10px;
     object-fit: contain;
     flex-shrink: 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25), 
+                inset 0 0 0 1px rgba(212, 175, 55, 0.5);
     transition: var(--transition-base);
+    filter: drop-shadow(0 2px 4px rgba(15, 58, 107, 0.15));
 }
 
 .header-logo:hover {
-    background: rgba(212, 175, 55, 0.25);
-    border-color: rgba(212, 175, 55, 0.5);
-    box-shadow: 0 12px 36px rgba(212, 175, 55, 0.25);
-    transform: translateY(-4px) scale(1.02);
+    background: rgba(212, 175, 55, 0.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 32px rgba(212, 175, 55, 0.4), 
+                inset 0 0 0 1.5px rgba(212, 175, 55, 0.7);
+    transform: translateY(-5px) scale(1.04);
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3));
 }
 
 .header-text {
